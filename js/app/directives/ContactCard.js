@@ -16,10 +16,14 @@ function ContactCard() {
 				'<label>Phone:</label>',
 				'{{ phone }}',
 				'<label>Username:</label>',
-				'<span class="username">{{ username }}</span>',
+				'<span class="username">{{ ctrl.username }}</span>',
 			'</div>'
 		].join(''),
-		restrict: 'E'
+		restrict: 'E',
+		controller: function ($scope, $filter) {
+			this.username =  $filter('lowercase')($scope.username)
+		},
+		controllerAs: 'ctrl'
 	};
 }
 
